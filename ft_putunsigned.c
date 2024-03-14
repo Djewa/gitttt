@@ -6,26 +6,21 @@
 /*   By: djewapat < djewapat@student.42bangkok.com> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 17:01:26 by djewapat          #+#    #+#             */
-/*   Updated: 2024/03/09 17:13:45 by djewapat         ###   ########.fr       */
+/*   Updated: 2024/03/14 16:52:21 by djewapat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "ft_printf.h"
 
-int	ft_putunsigned(unsigned long n)
+int	ft_putunsigned(unsigned int n)
 {
 	unsigned int	len;
-	unsigned int	base_len;
 	char			*base;
 
 	len = 0;
 	base = "0123456789";
-	base_len = ft_strlen(base); 
-	if (n >= base_len)
-	{
-		ft_putunsigned(n / base_len);
-		
-	}
+	if (n >= 10)
+		len += ft_putunsigned(n / 10);
+	len += ft_putchar((n % 10) + '0');	
 	return (len);
 }

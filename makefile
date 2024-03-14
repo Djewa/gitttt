@@ -6,43 +6,37 @@
 #    By: djewapat < djewapat@student.42bangkok.com> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/09 13:20:21 by djewapat          #+#    #+#              #
-#    Updated: 2024/03/09 13:36:56 by djewapat         ###   ########.fr        #
+#    Updated: 2024/03/14 17:02:48 by djewapat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+SRC = ft_printf.c ft_putaddress.c ft_putchar.c ft_puthexa.c ft_putnbr.c ft_putstr.c ft_putunsigned.c
+
+OBJ = $(SRC:.c=.o)
+
+HEADER = ft_printf.h
 
 CC = cc
+
 CFLAGS = -Wall -Wextra -Werror
-AR = ar rcs
-RM = rm -f
 
-FILES = ft_strlen \
-		ft_strchr \
-		ft_putchar_fd \
-		ft_putstr_fd \
-		ft_putnbr_fd \
-
-SRCS_DIR = ./
-SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
-SRCS_B = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES_B)))
-
-OBJS_DIR = ./
-OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES)))
-OBJS_B = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES_B)))
-
-.c.o: $(SRCS)
-	$(CC) $(CFLAGS) -c -o $@ $<
-
-$(NAME): $(OBJS)
-	$(AR) $@ $^
+NAME = libftprintf.a
 
 all: $(NAME)
 
+$(NAME): $(OBJ)
+	ar rc $(NAME) $(OBJ)
+	ranlib $(NAME)
+
+%.o: %.c $(HEADER)
+	$(CC) $(CFLAGS) -c $< -o $@
+
 clean:
-	$(RM) $(OBJS) $(OBJS_B)
+	rm -f $(OBJ)
 
 fclean: clean
-	$(RM) $(NAME)
+	rm -f $(NAME)
 
-re: clean all
+re: fclean all
+
+.PHONY: all clean fclean re
