@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putunsigned.c                                   :+:      :+:    :+:   */
+/*   ft_putaddress.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: djewapat < djewapat@student.42bangkok.com> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/09 17:01:26 by djewapat          #+#    #+#             */
-/*   Updated: 2024/03/18 13:35:10 by djewapat         ###   ########.fr       */
+/*   Created: 2024/03/14 15:06:33 by djewapat          #+#    #+#             */
+/*   Updated: 2024/03/18 14:40:38 by djewapat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putunsigned(unsigned int n)
+int	ft_putaddress(void *p)
 {
+	char			format;
 	unsigned int	len;
-	char			*base;
 
-	len = 0;
-	base = "0123456789";
-	if (n < 10)
-		return (ft_putchar(base[n]));
-	else
-		len += ft_putunsigned(n / 10);
-	len += ft_putchar(base[n % 10]);
+	if (p == 0)
+		return (ft_putstr("(nil)"));
+	len = 2;
+	format = 'x';
+	write (1, "0x", 2);
+	len += ft_puthexa((unsigned long)p, format);
 	return (len);
 }

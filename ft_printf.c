@@ -6,7 +6,7 @@
 /*   By: djewapat < djewapat@student.42bangkok.com> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 12:09:06 by djewapat          #+#    #+#             */
-/*   Updated: 2024/03/14 17:01:58 by djewapat         ###   ########.fr       */
+/*   Updated: 2024/03/18 15:11:24 by djewapat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,18 @@ int	ft_format(va_list ap, char format)
 	int	len;
 
 	len = 0;
-	if (format == '%')
-		len += (ft_putchar(format));
-	else if (format == 'c')
+	if (format == 'c')
 		return (ft_putchar(va_arg(ap, int)));
 	else if ( format == 's')
 		return (ft_putstr(va_arg(ap, char *)));
 	else if (format == 'p')
 		return (ft_putaddress(va_arg(ap, void *)));	
 	else if (format == 'd' || format == 'i')
-		return (ft_putnbr(va_arg(ap, int)));
+		return (ft_putnbr((long)va_arg(ap, int)));
 	else if (format == 'u')
 		return (ft_putunsigned((va_arg(ap, unsigned int))));
 	else if (format == 'x' || format == 'X')
-		return (ft_puthexa(va_arg(ap, unsigned int), format));
+		return (ft_puthexa((long)(va_arg(ap, unsigned int)), format));
 	else
 	{
 		len += ft_putchar('%');
@@ -53,16 +51,23 @@ int	ft_printf(const char *str, ...)
 		if (str[i] == '%')
 		{
 			++i;
-			len += ft_format(ap, str[i]);
+			if (str[i] == '%')
+				len += write (1, &str[i], 1);
+			else
+				len += ft_format(ap, str[i]);
 		}
 		else
-			len += write (1, str, 1);
+			len += write (1, &str[i], 1);
 		++i;
 	}
 	va_end(ap);
 	return (len);
 }
-int	main ()
+
+int main()
 {
-	ft_printf("%d\n", 120);
+    char *p = NULL;
+
+	printf("Hello, %c %s Hi %yfg %p %d %i %u %x %X %% Bye\n", 'M', "Miin", p, -214748364, 214748364, 2147483647, 9999999999, 9999999999);
+    ft_printf("Hello, %c %s Hi %yfg %p %d %i %u %x %X %% Bye\n", 'M', "Miin", p, -214748364, 214748364, 2147483647, 9999999999, 9999999999);
 }
