@@ -6,7 +6,7 @@
 /*   By: djewapat < djewapat@student.42bangkok.com> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 13:24:08 by djewapat          #+#    #+#             */
-/*   Updated: 2024/03/18 14:54:16 by djewapat         ###   ########.fr       */
+/*   Updated: 2024/03/18 16:41:06 by djewapat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_printf(const char *str, ...);
 int	ft_format(va_list ap, char format);
 int	ft_putaddress(void *p);
 int	ft_putchar(int c);
-int ft_puthexa(unsigned long n, char format);
+int	ft_puthexa(unsigned long n, char format);
 int	ft_putstr(char *str);
 int	ft_putnbr(long n);
 int	ft_putunsigned(unsigned int n);
