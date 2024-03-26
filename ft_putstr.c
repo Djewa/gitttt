@@ -6,7 +6,7 @@
 /*   By: djewapat < djewapat@student.42bangkok.com> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 14:41:35 by djewapat          #+#    #+#             */
-/*   Updated: 2024/03/14 16:53:40 by djewapat         ###   ########.fr       */
+/*   Updated: 2024/03/26 16:02:31 by djewapat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_putstr(char *str)
 	i = 0;
 	if (!str)
 	{
-		write (1, "(null)", 1);
+		write (1, "(null)", 6);
 		return (6);
 	}
 	while (*(str + i))
@@ -29,4 +29,3 @@ int	ft_putstr(char *str)
 	}
 	return (i);
 }
-// return 6 = length of null

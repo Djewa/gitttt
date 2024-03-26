@@ -6,7 +6,7 @@
 /*   By: djewapat < djewapat@student.42bangkok.com> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 12:09:06 by djewapat          #+#    #+#             */
-/*   Updated: 2024/03/18 16:40:26 by djewapat         ###   ########.fr       */
+/*   Updated: 2024/03/26 16:07:06 by djewapat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,8 @@ int	ft_printf(const char *str, ...)
 
 // int main()
 // {
-// 	char	*p = NULL;
+// 	char	*p = 0;
 
-// 	printf("Hello, %c %s Hi %yfg %p %d %i %u %x %X %% Bye\n", 
-// 	'M', "Miin", p, -214748364, 214748364, 2147483647, 9999999999, 9999999999);
-// 	ft_printf("Hello, %c %s Hi %yfg %p %d %i %u %x %X %% Bye\n", 
-// 	'M', "Miin", p, -214748364, 214748364, 2147483647, 9999999999, 9999999999);
+// 	printf("Hello, %c %s Hi %yfg %p %d %i %u %x %X %% Bye\n", NULL, NULL, p, -214748364, 214748364, 2147483647, 9999999999, 9999999999);
+// 	ft_printf("Hello, %c %s Hi %yfg %p %d %i %u %x %X %% Bye\n", NULL, NULL, p, -214748364, 214748364, 2147483647, 9999999999, 9999999999);
 // }
